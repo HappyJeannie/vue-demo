@@ -4,12 +4,50 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Vue-demo</title>
+  <title>Vue-simple-swiper</title>
+  <style>
+    .wrapper {
+      height: 300px;
+      width: 300px;
+      border: 1px solid #ee6e6e;
+    }
+    .wrapper .slides {
+      width: 900px;
+      height: 300px;
+      background: #aaa;
+      transition:all 0.5s ease-in-out;
+    }
+  </style>
 </head>
 <body>
-  vue demo
+  <div id="app"></div>
   <script src="https://cdn.bootcss.com/axios/0.18.0/axios.js"></script>
-  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.min.js"></script>
+  <script>
+    let view = new Vue({
+      el:"#app",
+      data:{
+        transformVal:''
+      },
+      template:`
+        <div>
+          <div class="wrapper">
+            <div class="slides" :style={transform:transformVal}></div>
+            <p>{{transformVal}}</p>
+          </div>
+          <div class="options">
+            <button @click="go(0)">1</button>
+            <button @click="go(1)">2</button>
+            <button @click="go(2)">3</butto>
+          </div>
+        </div>
+      `,
+      methods:{
+        go(idx){
+          this.transformVal = `translateX(-${idx*300}px)`;
+        }
+      }
+    })
+  </script>
 </body>
 </html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue-simple-tab</title>
+  <style>
+    ul,li{
+      list-style:none;
+    }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+  <script src="https://cdn.bootcss.com/axios/0.18.0/axios.js"></script>
+  <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.min.js"></script>
+  <script>
+    let view = new Vue({
+      el:"#app",
+      data:{
+        selected:'a',
+        tabs:[
+          {name:'a',content:'aaaa'},
+          {name:'b',content:'bbbb'},
+          {name:'c',content:'cccc'}
+        ]
+      },
+      template:`
+        <div>
+          <ol>
+            <li v-for="tab in tabs" @click="selected=tab.name">{{tab.name}}</li>
+          </ol>
+          <div class="content">
+            <ul>
+            <li v-for="tab in tabs" v-show="tab.name === selected">文本内容：{{tab.content}}</li>
+            </ul>
+          </div>
+        </div>
+      `,
+      methods:{
+        
+      }
+    })
+  </script>
+</body>
+</html>
